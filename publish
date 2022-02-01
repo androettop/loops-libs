@@ -37,13 +37,13 @@ else
     fi
     
     CURRENT_PROJECT=${PWD##*/}
-    CONTAINER=$(sudo docker ps --format "{{.Names}}" |  grep "$CURRENT_PROJECT")
+    CONTAINER=$(docker ps --format "{{.Names}}" |  grep "$CURRENT_PROJECT")
 
     if [ -z "$CONTAINER" ]; then
         echo -e "The container for the $RED'$CURRENT_PROJECT'$NC service does not exist or is not running"
         # print the same message but with the project name in red
     else
-        sudo docker exec -w "/devel" -e NPM_TOKEN="$NPM_TOKEN" "$CONTAINER" sh publish "$1" yes
+        docker exec -w "/devel" -e NPM_TOKEN="$NPM_TOKEN" "$CONTAINER" sh publish "$1" yes
 
         PACKAGE_VERSION=$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' "packages/$1/package.json")
 

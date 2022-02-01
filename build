@@ -7,7 +7,7 @@ CURRENT_PROJECT=${PWD##*/}
 # Build the image with Buildkit
 # https://docs.docker.com/develop/develop-images/build_enhancements/
 
-sudo docker build . \
+docker build . \
     -t "loops-ar/$CURRENT_PROJECT" \
     --build-arg UID="$(id -u)" \
     --build-arg GID="$(id -g)" \
