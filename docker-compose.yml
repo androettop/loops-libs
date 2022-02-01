@@ -2,7 +2,6 @@ version: "3"
 services:
   app:
     image: loops-ar/loops-libs
-    build: .
     environment:
       - APP_ENV=devel
     ports:

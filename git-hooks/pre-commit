@@ -16,17 +16,17 @@ CURRENT_PROJECT=${PWD##*/}
 CONTAINER=$(docker ps --format "{{.Names}}" |  grep "$CURRENT_PROJECT")
 
 if [ -z "$CONTAINER" ]; then
-    echo "${YELLOW}WARNING: You need to start the container to auto format the code. Check if your code is OK.${NC}"
+    echo -e "${YELLOW}WARNING: You need to start the container to auto format the code. Check if your code is OK.${NC}"
     # print the same message but with the project name in red
 else
-    echo "${BLUE}Formatting your code...${NC}"
+    echo -e "${BLUE}Formatting your code...${NC}"
     # Prettify all selected files
     docker exec --workdir /devel "$CONTAINER" yarn prettier --ignore-unknown --write "$FILES"
-    echo "${GREEN}Formatting done${NC}"
+    echo -e "${GREEN}Formatting done${NC}"
     # Add back the modified/prettified files to staging
-    echo "${BLUE}Runing git add for formatted files${NC}"
+    echo -e "${BLUE}Runing git add for formatted files${NC}"
     git add "$FILES"
-    echo "${GREEN}Commit successfully created :)${NC}"
+    echo -e "${GREEN}Commit successfully created :)${NC}"
 fi
 
 exit 0

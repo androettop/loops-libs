@@ -11,7 +11,7 @@ CURRENT_PROJECT=${PWD##*/}
 CONTAINER=$(docker ps --format "{{.Names}}" |  grep "$CURRENT_PROJECT")
 
 if [ -z "$CONTAINER" ]; then
-    echo "The container for the $RED'$CURRENT_PROJECT'$NC service does not exist or is not running"
+    echo -e "The container for the $RED'$CURRENT_PROJECT'$NC service does not exist or is not running"
     # print the same message but with the project name in red
 else
     docker exec --workdir /devel -ti $CONTAINER yarn $*
