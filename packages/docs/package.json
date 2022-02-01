@@ -16,8 +16,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "build": "mkdir -p ../../public && build-storybook -s public -o ../../public",
-    "start": "start-storybook -p 3000 -s public"
+    "build": "mkdir -p ../../public && build-storybook -o ../../public",
+    "start": "start-storybook -p 3000"
   },
   "browserslist": {
     "production": [
