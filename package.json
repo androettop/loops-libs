@@ -1,0 +1,44 @@
+{
+  "name": "@loops-ar/loops",
+  "version": "1.0.3",
+  "private": true,
+  "description": "loops js libraries",
+  "scripts": {
+    "ui:start": "yarn workspace @loops-ar/ui start",
+    "ui:build": "yarn workspace @loops-ar/ui build",
+    "hooks:start": "yarn workspace @loops-ar/hooks start",
+    "hooks:build": "yarn workspace @loops-ar/hooks build",
+    "docs:start": "cd packages/docs && yarn start",
+    "docs:build": "yarn workspace @loops-ar/docs build",
+    "lint": "eslint ./",
+    "lint:fix": "eslint ./ --fix",
+    "start": "yarn hooks:build && yarn ui:build && npm-run-all -r --parallel ui:start hooks:start docs:start",
+    "build": "yarn workspaces run build",
+    "generate": "yo @loops-ar/loops --force"
+  },
+  "files": [],
+  "author": "Pablo Androetto <androettop@gmail.com> (https://github.com/androettop/)",
+  "contributors": [
+    "Pablo Androetto <androettop@gmail.com> (https://github.com/androettop/)"
+  ],
+  "workspaces": {
+    "packages": [
+      "packages/hooks",
+      "packages/ui",
+      "packages/docs",
+      "packages/generator-loops"
+    ]
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@loops-ar/generator-loops": "^1.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.4.1",
+    "yo": "^4.3.0"
+  }
+}

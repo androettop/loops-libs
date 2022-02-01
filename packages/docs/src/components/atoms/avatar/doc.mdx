@@ -1,0 +1,75 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+import FigmaFrame from "../../../utils/figma";
+import Avatar from "./avatar.stories";
+import ArgsTable from "../../../utils/argsTable";
+
+# Avatar
+
+Avatars are found throughout material design with uses in everything from tables to dialog menus.
+
+## Figma
+
+<FigmaFrame nodeId="541:1988" />
+
+## Image avatars
+
+Image avatars can be created by passing the image src to the **image** prop.
+
+<Canvas>
+  <Story id="atoms-avatar--image-1" />
+  <Story id="atoms-avatar--image-2" />
+  <Story id="atoms-avatar--image-3" />
+</Canvas>
+
+## Letter avatars
+
+Avatars containing simple characters can be created by passing a string to the **letters** prop.
+
+You can set different colors for the avatar specifying the **variant** prop.
+
+<Canvas>
+  <Story id="atoms-avatar--letter-1" />
+  <Story id="atoms-avatar--letter-2" />
+  <Story id="atoms-avatar--letter-3" />
+</Canvas>
+
+You can also specify a name and the letters will be generated.
+
+<Canvas>
+  <Story id="atoms-avatar--letter-4" />
+  <Story id="atoms-avatar--letter-5" />
+</Canvas>
+
+## Sizes
+
+You can change the size of the avatar with the **size** prop.
+
+<Canvas>
+  <Story id="atoms-avatar--small" />
+  <Story id="atoms-avatar--medium" />
+  <Story id="atoms-avatar--large" />
+</Canvas>
+
+## Icon avatars
+
+Icon avatars are created by passing an icon name to the icon prop.
+
+<Canvas>
+  <Story id="atoms-avatar--icon-1" />
+  <Story id="atoms-avatar--icon-2" />
+  <Story id="atoms-avatar--icon-3" />
+</Canvas>
+
+## Shapes
+
+If you need square or rounded avatars, use the variant prop.
+
+<Canvas>
+  <Story id="atoms-avatar--letter-1" />
+  <Story id="atoms-avatar--square" />
+  <Story id="atoms-avatar--rounded" />
+</Canvas>
+
+## Props
+
+<ArgsTable story={Avatar} />

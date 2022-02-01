@@ -1,0 +1,42 @@
+import { Meta } from "@storybook/addon-docs";
+import LoopsMeta from "../../utils/loopsMeta";
+
+<Meta title="2. Guides / Component creation" />
+
+# Component creation
+
+<LoopsMeta readingTime={3} author="Pablo Androetto" />
+
+### Introduction
+
+This guide will help you to understand how to create componentes following the atomic design methodology.
+
+### Component generation
+
+You can generate a new component running the following command in your terminal
+
+```
+$ ./yarn generate
+```
+
+A wizard will guiate to the component creation process, based in [this guide](/docs/·guides-atomic-design--page) you can determine if you need an Atom, or a Molecule, or an Organism...
+
+> ![⚠️](https://twemoji.maxcdn.com/16x16/26a0.png) **At the moment to write this guide the generator not add the component to the library index.js, you should add it manually**
+
+### Component structure
+
+The base component comes with a file for the component and another file for the styles (an styled-component Component);
+
+### Tips
+
+#### Keep the modularity
+
+If the component (an atom by example) increase they size always you can move it to the superior category (molecule in this example).
+
+#### Whenever possible, use styled components
+
+If you need to create small sub components or parts of a larger component, which are not big enough to be an atom, it is recommended that this is a styled component, this will improve modularization, make styling easier and make it easier to migrate it to an atom if necessary in the future.
+
+#### Avoid adding unnecessary dependencies
+
+Before adding new dependencies in the loops-libs packages, check if there is no existing one that meets the needs. If you are not sure, check with your colleagues

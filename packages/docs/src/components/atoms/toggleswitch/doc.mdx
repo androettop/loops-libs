@@ -1,0 +1,53 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+import ComponentStory from "./toggleswitch.stories";
+import FigmaFrame from "../../../utils/figma";
+import ArgsTable from "../../../utils/argsTable";
+
+# Toggle Switch
+
+This component works the same way as a Checkbox (in fact it is internally a Checkbox).
+
+## Figma
+
+<FigmaFrame nodeId="901:1423" />
+
+## Sample toggle switch
+
+You can set the prop **value** to true or false to change its value and get its value
+with the callback **onChange**.
+
+<Canvas>
+  <Story id="atoms-toggle-switch--sample-switch-true" />
+  <Story id="atoms-toggle-switch--sample-switch-false" />
+</Canvas>
+
+You can set a small label in top of the text input with the **label** prop.
+
+<Canvas>
+  <Story id="atoms-toggle-switch--sample-switch-label" />
+</Canvas>
+
+## Validations
+
+You can validate the toggle switch and show the errors with the props **touched** and **error**.
+
+The error message will be shown in the input only if the field is touched.
+
+<Canvas>
+  <Story id="atoms-toggle-switch--sample-switch-error" />
+</Canvas>
+
+## States
+
+You can set many standard HTML props to change the input state, like readOnly, disabled, etc.
+
+<Canvas>
+  <Story id="atoms-toggle-switch--sample-switch-readonly-on" />
+  <Story id="atoms-toggle-switch--sample-switch-readonly-off" />
+  <Story id="atoms-toggle-switch--sample-switch-disabled-on" />
+  <Story id="atoms-toggle-switch--sample-switch-disabled-off" />
+</Canvas>
+
+## Props
+
+<ArgsTable story={ComponentStory} />

@@ -1,0 +1,66 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+import ComponentStory from "./textinput.stories";
+import FigmaFrame from "../../../utils/figma";
+import ArgsTable from "../../../utils/argsTable";
+
+# Text input
+
+Textinput is a text input component, can be used to construct forms or other
+components that require a text input.
+
+If you want to create a form see the Form/Fields components.
+
+## Figma
+
+<FigmaFrame nodeId="785:6155" />
+
+## Basic text input
+
+You can set a small label in top of the text input with the **label** prop.
+You can also specify a type and a placeholder like in a HTML standard input.
+
+<Canvas>
+  <Story id="atoms-text-input--sample-text-input" />
+  <Story id="atoms-text-input--sample-password" />
+</Canvas>
+
+## Multiline (Text Area)
+
+The text input component can be used as a HTML textarea setting the **multiLine** prop.
+You can also use all the native text area props.
+
+<Canvas>
+  <Story id="atoms-text-input--sample-multiline" />
+</Canvas>
+
+## Icon
+
+Is posible to add an icon to the input, and optionaly you can add an action when the user press this icon.
+
+<Canvas>
+  <Story id="atoms-text-input--sample-clickable" />
+  <Story id="atoms-text-input--sample-icon" />
+</Canvas>
+
+## Validations
+
+You can validate the fields and show the errors with the props **touched** and **error**.
+
+The error message will be shown in the input only if the field is touched.
+
+<Canvas>
+  <Story id="atoms-text-input--sample-validation" />
+</Canvas>
+
+## States
+
+You can set many standard HTML props to change the input state, like readOnly, disabled, etc.
+
+<Canvas>
+  <Story id="atoms-text-input--sample-readonly" />
+  <Story id="atoms-text-input--sample-disabled" />
+</Canvas>
+
+## Props
+
+<ArgsTable story={ComponentStory} />

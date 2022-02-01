@@ -1,0 +1,114 @@
+import { Meta } from "@storybook/addon-docs";
+import LoopsMeta from "../../utils/loopsMeta";
+
+<Meta title="2. Guides / Repository management" />
+
+# Repository management
+
+<LoopsMeta readingTime={10} author="Pablo Androetto" />
+
+### Introduction
+
+This is the first guide you should read if you are new to the project. here you will find some basic information about the project and how to create new components and how to use commit the changes to the repository.
+
+### Repository structure
+
+We use monorepo with [workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces) for the main package of the library, the package with the documentation with storybook and the packages with components/hooks additional.
+
+The repository has a Dockerfile to build a documentation image, the deploy of this image, as well as the npm packages is planned to be fully automated through [bitbucket pipelines](https://bitbucket.org/product/es/features/pipelines).
+
+The main packages are:
+
+- **@loops-ar/docs**: The project that contains the storybook and all the related documentation of the components of **@loops-ar/ui** and the rest of the packages with components.
+- **@loops-ar/generator-loops**: The package used to automate the scaffolding of the new components/stories.
+- **@loops-ar/hooks**: The project that contains the loops hooks.
+- **@loops-ar/ui**: The base library for components that follow the design system defined in the [Loops design system](https://figma.com/).
+
+### Commits and branches
+
+All new developments must be done in a branch with the name of the jira issue, starting from the **main** branch, and then, merging with the main branch through a PR.
+
+The commits must have a descriptive message in english indicating the type of change that is being uploaded, and the package affected (by default **@loops-ar/ui**).
+
+The commit types available are:
+
+- **FEAT**: A new feature.
+- **FIX**: A bug fix.
+- **DOCS**: Documentation changes (update the repo @loops-ar/docs, no need to specify it).
+- **STYLE**: Changes in formatting, commas, etc; No code changes.
+- **REFACTOR**: Code refactoring.
+- **TEST**: Add tests, refactor tests; No code changes.
+- **CHORE**: Update build tasks, configuration of package managers; No code changes.
+
+We can specify the severity of the commit, the available options are: **patch**, **minor**, **major**. As a rule, all non-destructive changes are patch, changes that can affect to some application are minor. The severity major is reserved for stable releases of the library.
+
+The format of the commit message must be:
+
+> **[TYPE] [Package (optional): severity] LX-123 Commit message in english.**
+
+#### To do & not to do:
+
+> ![✅](https://twemoji.maxcdn.com/16x16/2705.png) **[FEAT] LX-321 Added new atom ‘Calendar’**
+
+_If you add a component to the base package of the library, you do not need to specify the repository._
+
+> ![❌️](https://twemoji.maxcdn.com/16x16/274c.png) **[DOCS] [@loops-ar/docs] LX-333 Added new story for Calendar atom**
+
+_The commits with type “docs” do not need to specify the affected package._
+
+> ![✅](https://twemoji.maxcdn.com/16x16/2705.png) **[REFACTOR] [@loops-ar/ui:minor] LX-456 Change in ListResult logic**
+
+_In this case is correct (and necessary) to put the name of the package to set the severity of the commit._
+
+### Pull requests
+
+We will make a more strict control in the approval of pull requests with the aim to maintain the quality, the scalability and the maintainability of the code.
+
+> ![ℹ️](https://twemoji.maxcdn.com/16x16/2139.png) **In **exceptional** cases we can always merge directly without passing through a pull request, but after solving the problem immediately we must report the situation to do the code review and if necessary make the changes that are oportunos with more calm.**
+
+#### Important aspects
+
+In addition to the commits, we must respect some rules:
+
+- All PR must have a descriptive title.
+- The description must have a short paragraph explaining the reason of the PR (if we make the commits as mentioned in the previous point, and put a descriptive title, it should be sufficient in most cases).
+
+#### When merging a pull request?
+
+Before merging a PR this must be approved by at least one person, there are certain rules that must be met to approve a PR:
+
+- The code must be ordered and correctly formatted (the project has prettier configured to work automatically).
+- No unnecessary dependencies must be included (or more than one for the same function).
+- Components must be correctly modularized.
+- The complexity of the code must be always and as much as possible the lowest.
+- No include commented code or dummy components.
+
+### Pipeline workflow
+
+<!-- TODO: Remove this comment when the project pipelines are impemented -->
+
+> ![⚠️](https://twemoji.maxcdn.com/16x16/26a0.png) **Currently the pipelines are not implemented**
+
+It's interesting to know how the automatic tasks work when merging a PR because it helps us understand the reason of the names of commits and PRs.
+
+We use pipelines to update automatically the version numbers in the package.json and so avoid conflicts with the versions. We also automate the deployment of the npm packages and the docker image.
+
+When merging a PR the following tasks are executed:
+
+#### 1. Update the version numbers
+
+The tags **[CHORE]**, **[FIX]**, **[FEAT]** and **[REFACTOR]** trigger a version increment in the package **@loops-ar/ui**, it can be changed using the tag **[@loops-ar/package:severity]**, where package is the name of the package inside the monorepo and severity (optional) is the severity of the commit. (**major**, **minor**, **patch**). Then publishes the package in verdaccio.
+
+**Examples**:
+
+> **[FEAT] [@loops-ar/searchbar:minor] New feature added to the searchbar component.**
+
+_In this case we increment the **minor** version of the package **@loops-ar/searchbar** and it is published in verdaccio._
+
+> **[FIX] [@loops-ar/searchbar:patch] Fix bug in the searchbar component.**
+
+_In this case we increment the version **patch** of the **@loops-ar/ui** package and it is published in verdaccio._
+
+#### 2. Publish docker image
+
+The tags **[CHORE]**, **[FIX]**, **[FEAT]**, **[REFACTOR]**, **[TEST]** and **[DOCS]** trigger the publishing of the Docker image of the project, to update the production storybook.

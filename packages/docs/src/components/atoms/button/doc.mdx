@@ -1,0 +1,117 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+import ComponentStory from "./button.stories";
+import FigmaFrame from "../../../utils/figma";
+import ArgsTable from "../../../utils/argsTable";
+
+# Button
+
+Buttons allow users to take actions, and make choices, with a single tap.
+
+Buttons communicate actions that users can take. They are typically placed throughout your UI, in places like:
+
+- Modal windows
+- Forms
+- Cards
+- Toolbars
+
+## Figma
+
+<FigmaFrame nodeId="295:124" />
+
+## Basic Button
+
+The Button comes with three modes: solid (default), outline, and link.
+
+<Canvas>
+  <Story id="atoms-button--solid" />
+  <Story id="atoms-button--outline" />
+  <Story id="atoms-button--link" />
+</Canvas>
+
+### Solid buttons
+
+Solid buttons are high-emphasis, distinguished by their use of elevation and fill. They contain actions that are primary to your app.
+
+<Canvas>
+  <Story id="atoms-button--solid" />
+  <Story id="atoms-button--solid-disabled" />
+</Canvas>
+
+### Outlined buttons
+
+Outlined buttons are medium-emphasis buttons. They contain actions that are important but aren't the primary action in an app.
+
+Outlined buttons are also a lower emphasis alternative to contained buttons, or a higher emphasis alternative to link buttons.
+
+<Canvas>
+  <Story id="atoms-button--outline" />
+  <Story id="atoms-button--outline-disabled" />
+</Canvas>
+
+### Link buttons
+
+Link buttons are typically used for less-pronounced actions, including those located: in dialogs, in cards. In cards, link buttons help maintain an emphasis on card content.
+
+<Canvas>
+  <Story id="atoms-button--link" />
+  <Story id="atoms-button--link-disabled" />
+</Canvas>
+
+## Handling clicks
+
+Buttons accept an `onClick` handler that is applied to the root DOM element.
+
+```jsx
+<Button
+  text="Click me"
+  onClick={() => {
+    alert("clicked");
+  }}
+/>
+```
+
+Note that the documentation avoids mentioning native props (there are a lot) in the API section of the components.
+
+## Variant
+
+We can specify the variant of the button by passing a `variant` prop.
+
+<Canvas>
+  <Story id="atoms-button--neutral-variant" />
+  <Story id="atoms-button--primary-variant" />
+  <Story id="atoms-button--secondary-variant" />
+  <Story id="atoms-button--error-variant" />
+</Canvas>
+
+## Sizes
+
+For larger or smaller buttons, use the size prop.
+
+<Canvas>
+  <Story id="atoms-button--solid-small" />
+  <Story id="atoms-button--solid-medium" />
+  <Story id="atoms-button--solid-large" />
+</Canvas>
+
+## Buttons with icon and text
+
+Sometimes you might want to have icons for certain buttons to enhance the UX of the application as we recognize logos more easily than plain text. For example, if you have a delete button you can label it with a dustbin icon.
+
+<Canvas>
+  <Story id="atoms-button--delete" />
+</Canvas>
+
+## Icon button
+
+Icon buttons are commonly found in Cards.
+
+Icons are also appropriate for toggle buttons that allow a single choice to be selected or deselected, such as adding or removing a star to an item.
+
+<Canvas>
+  <Story id="atoms-button--icon-trash" />
+  <Story id="atoms-button--icon-plus" />
+</Canvas>
+
+## Props
+
+<ArgsTable story={ComponentStory} />

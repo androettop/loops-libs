@@ -1,0 +1,53 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+import ComponentStory from "./segment.stories";
+import FigmaFrame from "../../../utils/figma";
+import ArgsTable from "../../../utils/argsTable";
+
+# Segment
+
+A segment is used to create a grouping of related content.
+
+## Figma
+
+<FigmaFrame nodeId="463:202" />
+
+## Variants
+
+You can specify a variant to change the segment color.
+
+<Canvas>
+  <Story id="atoms-segment--segment-light" />
+  <Story id="atoms-segment--segment-dark" />
+  <Story id="atoms-segment--segment-primary" />
+  <Story id="atoms-segment--segment-warning" />
+</Canvas>
+
+## Compact segment
+
+You can compact the segment borders to show small contents using the **compact** prop.
+
+<Canvas>
+  <Story id="atoms-segment--segment-light" />
+  <Story id="atoms-segment--segment-compact" />
+</Canvas>
+
+## Excecute actions on click
+
+Is posible to excecute a function when pressing the card specifying the **onClick** prop.
+
+<Canvas>
+  <Story id="atoms-segment--segment-clickable" />
+</Canvas>
+
+## Hover effect
+
+In some cases it is good to have feedback visual interactions with the user with the segment.
+We can enable the hover effect with the **hover** prop.
+
+<Canvas>
+  <Story id="atoms-segment--segment-hover" />
+</Canvas>
+
+## Props
+
+<ArgsTable story={ComponentStory} />

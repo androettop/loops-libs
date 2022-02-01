@@ -1,0 +1,34 @@
+import React from 'react';
+import { <%= componentPascal %> } from "@loops-ar/ui";
+import Doc from "./doc.mdx";
+import simpleArgTypes from "../../../utils/argTypes";
+
+export default {
+  title: "<%= componentType %> / <%= componentName %>",
+  component: <%= componentPascal %>,
+  argTypes: simpleArgTypes({
+    /*
+        "prop_name":{
+            description:"prop description",
+            type: "string",
+            control: "text",
+            defaultValue: "default value",
+            required: true,
+        }
+    */
+  }),
+  parameters: {
+    viewMode: "docs",
+    docs: {
+      page: Doc,
+    },
+  },
+};
+
+// We create a “template” of how args map to rendering
+const Template = (args) => <<%= componentPascal %> {...args} />;
+
+export const Sample<%= componentPascal %> = Template.bind({});
+Sample<%= componentPascal %>.args = {
+    // Here we define the args
+};

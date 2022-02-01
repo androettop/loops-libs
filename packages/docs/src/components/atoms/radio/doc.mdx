@@ -1,0 +1,52 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+import ComponentStory from "./radio.stories";
+import FigmaFrame from "../../../utils/figma";
+import ArgsTable from "../../../utils/argsTable";
+
+# Radio
+
+This component allow to user select only one option from list.
+
+## Figma
+
+<FigmaFrame nodeId="1509:1935" />
+
+## Your example
+
+You can set the options with the **options** in the following format:
+
+```ts
+type RadioOption = Array<{
+  label: string;
+  value: any;
+}>;
+```
+
+You can set the selected option with the **value** prop, and you can get the value changes with the **onChange** (returns the selected value) prop.
+
+<Canvas>
+  <Story id="atoms-radio--sample-radio" />
+</Canvas>
+
+## Validations
+
+You can validate the fields and show the errors with the props **touched** and **error**.
+
+The error message will be shown in the input only if the field is touched.
+
+<Canvas>
+  <Story id="atoms-radio--sample-validation" />
+</Canvas>
+
+## States
+
+You can set many standard HTML props to change the input state, like readOnly, disabled, etc.
+
+<Canvas>
+  <Story id="atoms-radio--sample-readonly" />
+  <Story id="atoms-radio--sample-disabled" />
+</Canvas>
+
+## Props
+
+<ArgsTable story={ComponentStory} />

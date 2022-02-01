@@ -1,0 +1,10 @@
+import styled from "styled-components";
+
+export const Styled<%= componentPascal %> = styled.div(({
+    theme: {
+      // Theme variables here
+      dummy,
+    }
+  }) => `
+  /* Styles here */
+`);

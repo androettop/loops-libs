@@ -1,0 +1,17 @@
+import React from "react";
+import PropTypes from "prop-types";
+import { Styled<%= componentPascal %> } from "./<%= componentLowercase %>.styles";
+
+const <%= componentPascal %> = ({ children, ...props }) => (
+  <Styled<%= componentPascal %> {...props}>{children}</Styled<%= componentPascal %>>
+);
+
+<%= componentPascal %>.propTypes = {
+  children: PropTypes.any,
+};
+
+<%= componentPascal %>.defaultProps = {
+  children: undefined,
+};
+
+export default <%= componentPascal %>;

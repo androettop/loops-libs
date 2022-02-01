@@ -1,0 +1,61 @@
+#!/usr/bin/env python3
+import sys
+import re
+import utils
+
+AVAILABLE_TAGS = ['FEAT', 'FIX', 'DOCS', 'STYLE', 'REFACTOR', 'TEST', 'CHORE', 'VERSION']
+WORKSPACE_PREFIX = "@loops-ar/"
+
+
+def wants_to_continue():
+    resp = input("Do you want to continue creating the commit? (N/y)")
+    if resp.strip().lower() != 'y':
+        sys.exit(1)
+
+
+def get_commit_tags(message):
+    return re.findall(r'\[([^\]]+)\]', message)
+
+
+def validate_commit_message(tags):
+    no_valid_tags = True
+    invalid_tags = []
+    for tag in tags:
+        if tag in AVAILABLE_TAGS:
+            no_valid_tags = False
+        elif not tag.startswith(WORKSPACE_PREFIX):
+            invalid_tags.append(tag)
+
+    if no_valid_tags or len(invalid_tags) > 0:
+        if no_valid_tags:
+            utils.error(
+                'Commit message does not contain valid tags, you should use at least one of the following: ' +
+                ', '.join(AVAILABLE_TAGS)
+            )
+        if len(invalid_tags) > 0:
+            utils.error(
+                'Commit message contains invalid tags: ' +
+                ', '.join(invalid_tags)
+            )
+        utils.error('Example: commit -m "[FEAT] Add feature in Button"')
+        utils.error(
+            'Optionally you can add a tag with the workspace prefix to create a tag like [@loops-ar/ui] or [@loops-ar/docs:minor]')
+        wants_to_continue()
+    else:
+        utils.success('Your commit message looks great!')
+
+
+if sys.stdout.isatty():
+    try:
+        sys.stdin = open('/dev/tty')
+        print("Parametro 1: ", sys.argv[1])
+        file_name = sys.argv[1]
+        # Read the file and save the content in the content variable
+        content = ""
+        with open(file_name, 'r') as f:
+            content = f.read()
+
+        tags = get_commit_tags(content)
+        validate_commit_message(tags)
+    except:
+        pass

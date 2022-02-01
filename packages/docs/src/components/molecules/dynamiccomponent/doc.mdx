@@ -1,0 +1,39 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+import ComponentStory from "./dynamiccomponent.stories";
+import FigmaFrame from "../../../utils/figma";
+import ArgsTable from "../../../utils/argsTable";
+
+# Dynamic Component
+
+Generates a component (or a list of components) depending on the props.
+
+## Examples
+
+### Generating an image
+
+<Canvas>
+  <Story id="molecules-dynamic-component--sample-image" />
+</Canvas>
+
+### Generating an button
+
+<Canvas>
+  <Story id="molecules-dynamic-component--sample-button" />
+</Canvas>
+
+### Generating a tooltip button
+
+Some components have more than one property to which you might
+want to assign a value dynamically.
+
+The Tooltip Button component has two props assigned, "**text**" and
+"**title**". If the first does not have any value assigned in
+"props" it will be used, if not the second property will be used.
+
+<Canvas>
+  <Story id="molecules-dynamic-component--sample-tooltip-button-1" />
+  <Story id="molecules-dynamic-component--sample-tooltip-button-2" />
+</Canvas>
+## Props
+
+<ArgsTable story={ComponentStory} />

@@ -1,0 +1,114 @@
+import { Meta } from "@storybook/addon-docs";
+import LoopsMeta from "../../utils/loopsMeta";
+
+<Meta title="2. Guides / Project Setup" />
+
+# Project Setup
+
+<LoopsMeta readingTime={4} author="Pablo Androetto" />
+
+### Introduction
+
+This guide will help you through the process of setting up your development environment,
+and it contains all the necessary setup to get you started deploying.
+
+### Running storybook in dev
+
+Clone the repo in your projects directory:
+
+```sh
+$ cd ~/projects
+$ git clone git@github.com:loops-ar/loops-libs.git
+```
+
+Setup the repo configurations (git hooks):
+
+```sh
+$ ./setup.sh
+```
+
+Build the image with
+
+```sh
+$ cd ~/projects/loops-libs
+$ ./build --target dev
+```
+
+And run the service with this docker-compose file:
+
+```yml
+version: "3"
+services:
+  app:
+    image: loops-ar/loops-libs
+    environment:
+      - APP_ENV=devel
+    ports:
+      - 4000:3000
+    volumes:
+      - /home/$USER/projects/loops-libs:/devel
+```
+
+> ![ℹ️](https://twemoji.maxcdn.com/16x16/2139.png) **This docker-compose exposes the storybook service on port 4000, make sure to not use the same port on your host or in another container.**
+
+### Deploy docker image
+
+You can deploy the docker image with hellesbock
+
+```
+$ hellesbock create-release --verbose
+```
+
+### Publish packages to verdaccio
+
+The current repository contains a script to publish the packages to verdaccio.
+
+You need to set the NPM_TOKEN env variable before use the script, or call the script setting the NPM_TOKEN env variable at same time.
+
+```sh
+$ NPM_TOKEN=<your-token> ./publish <package>
+```
+
+**Example**:
+
+```sh
+$ NPM_TOKEN=abcdefghijklmnopqrstuvwxyz ./publish ui
+```
+
+> ![⚠️](https://twemoji.maxcdn.com/16x16/26a0.png) **Before publish you should commit the new version number (Soon automatically with pipelines).**
+
+### Add a new loops-ar package
+
+1. Add the package in the package directory.
+
+   The name of te package in the package.json file should look like this: `{ "name": "@loops-ar/my_package" }`.
+
+2. Add the package in the Dockerfile.
+
+```Dockerfile
+...
+COPY package.json ./
+
+# Add new packages here
+COPY packages/docs/package.json ./packages/docs/
+COPY packages/ui/package.json ./packages/ui/
+COPY packages/my_package/package.json ./packages/my_package/
+
+RUN npm install --verbose
+...
+```
+
+3. Add the package in the workspace (package.json)
+
+```json
+...
+"workspaces": {
+    "packages": [
+    "packages/ui",
+    "packages/docs",
+    "packages/generator-loops"
+    //Add new packages here
+    ]
+},
+...
+```

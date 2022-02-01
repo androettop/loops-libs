@@ -1,0 +1,30 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+import ComponentStory from "./calendarbutton.stories";
+import FigmaFrame from "../../../utils/figma";
+import ArgsTable from "../../../utils/argsTable";
+
+# Calendar Button
+
+Calendar Buttons are the days selectors of calendars.
+
+## Figma
+
+<FigmaFrame nodeId="901:1386" />
+
+## Button types
+
+There are several types of buttons for the different states of the day selector
+
+<Canvas>
+  <Story id="atoms-calendar-button--default-calendar-button" />
+  <Story id="atoms-calendar-button--today-calendar-button" />
+  <Story id="atoms-calendar-button--active-calendar-button" />
+  <Story id="atoms-calendar-button--disabled-calendar-button" />
+  <Story id="atoms-calendar-button--rangestart-calendar-button" />
+  <Story id="atoms-calendar-button--rangecenter-calendar-button" />
+  <Story id="atoms-calendar-button--rangeend-calendar-button" />
+</Canvas>
+
+## Props
+
+<ArgsTable story={ComponentStory} />

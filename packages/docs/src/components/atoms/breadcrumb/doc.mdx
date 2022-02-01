@@ -1,0 +1,31 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+import ComponentStory from "./breadcrumb.stories";
+import FigmaFrame from "../../../utils/figma";
+import ArgsTable from "../../../utils/argsTable";
+
+# Breadcrumb
+
+Breadcrumb displays information about the navigation history.
+
+## Figma
+
+<FigmaFrame nodeId="363:307" />
+
+## Sections
+
+You can specify a list of sections with the **sections** prop. Sections is an array of objects with the following stucture:
+
+```ts
+type Section = {
+  url?: string;
+  label: string;
+};
+```
+
+<Canvas>
+  <Story id="atoms-breadcrumb--sample-breadcrumb" />
+</Canvas>
+
+## Props
+
+<ArgsTable story={ComponentStory} />

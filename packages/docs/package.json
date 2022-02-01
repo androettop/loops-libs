@@ -1,0 +1,44 @@
+{
+  "name": "@loops-ar/docs",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@loops-ar/hooks": "^1.0.0",
+    "@loops-ar/ui": "^1.0.0",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.5",
+    "react-scripts": "4.0.3",
+    "redux": "^4.1.1",
+    "redux-form": "^8.3.7",
+    "redux-thunk": "^2.4.0",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "build": "mkdir -p ../../public && build-storybook -s public -o ../../public",
+    "start": "start-storybook -p 3000 -s public"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@storybook/components": "^6.3.8",
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-docs": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/addon-links": "^6.3.8",
+    "@storybook/node-logger": "^6.3.8",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.3.8"
+  }
+}

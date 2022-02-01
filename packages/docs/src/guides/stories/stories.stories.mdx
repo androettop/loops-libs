@@ -1,0 +1,84 @@
+import { Meta } from "@storybook/addon-docs";
+import LoopsMeta from "../../utils/loopsMeta";
+
+<Meta title="2. Guides / Story creation" />
+
+# Story creation
+
+<LoopsMeta readingTime={5} author="Pablo Androetto" />
+
+### Introduction
+
+This guide will help you to understand how to create good stories for your componentes.
+
+### Story generation
+
+You can generate a new story running the following command in your terminal
+
+```
+$ ./yarn generate
+```
+
+A wizard will guiate to the story creation process.
+
+### Component story structure
+
+The component story will contain a short description, a Figma frame, and a set of examples and technical explanations (if required).
+
+If the component has a visual representation you should link it to figma, for this you can enable the [NodeInspector plugin](https://www.figma.com/community/plugin/758276196886757462) and copy the NodeID of the component group.
+
+![Node inspector](https://i.imgur.com/Z29tYgE.jpg)
+
+![Copying the node id](https://i.imgur.com/vHccCnO.jpg)
+
+Later you can set the node in the FigmaFrame
+
+```jsx
+## Figma
+
+<FigmaFrame nodeId="785:6155" />
+```
+
+### Useful story parts
+
+#### Reading time and author badges
+
+You can set the time in minutes and your names as string.
+
+<LoopsMeta readingTime={10} author="Pablo Androetto" />
+
+```jsx
+<LoopsMeta readingTime={10} author="Pablo Androetto" />
+```
+
+#### Info Note
+
+> ![ℹ️](https://twemoji.maxcdn.com/16x16/2139.png) **Put here the text**
+
+```md
+> ![ℹ️](https://twemoji.maxcdn.com/16x16/2139.png) **Put here the text**
+```
+
+#### Warning Note
+
+> ![⚠️](https://twemoji.maxcdn.com/16x16/26a0.png) **Put here the text**
+
+```md
+> ![⚠️](https://twemoji.maxcdn.com/16x16/26a0.png) **Put here the text**
+```
+
+#### Error Note
+
+> ![❌️](https://twemoji.maxcdn.com/16x16/274c.png) **Put here the text**
+
+```md
+> ![❌️](https://twemoji.maxcdn.com/16x16/274c.png) **Put here the text**
+```
+
+#### Success Note
+
+> ![✅](https://twemoji.maxcdn.com/16x16/2705.png) **Put here the text**
+
+```md
+> ![✅](https://twemoji.maxcdn.com/16x16/2705.png) **Put here the text**
+```

@@ -1,0 +1,42 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+import ComponentStory from "./separator.stories";
+import FigmaFrame from "../../../utils/figma";
+import ArgsTable from "../../../utils/argsTable";
+
+# Separator
+
+Separators can be used to divide UI components (horizontally).
+
+## Figma
+
+<FigmaFrame nodeId="298:23" />
+
+## Default separator
+
+<Canvas>
+  <Story id="atoms-separator--default-separator" />
+</Canvas>
+
+## Primary separator
+
+<Canvas>
+  <Story id="atoms-separator--primary-separator" />
+</Canvas>
+
+## Error separator
+
+<Canvas>
+  <Story id="atoms-separator--error-separator" />
+</Canvas>
+
+## Compact
+
+The default separador has a vertical margin that can be reduced using the **compact** prop.
+
+<Canvas>
+  <Story id="atoms-separator--compact-separator" />
+</Canvas>
+
+## Props
+
+<ArgsTable story={ComponentStory} />

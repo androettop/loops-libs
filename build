@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# This script build the docker image for the current project
+
+CURRENT_PROJECT=${PWD##*/}
+
+# Build the image with Buildkit
+# https://docs.docker.com/develop/develop-images/build_enhancements/
+
+sudo docker build . \
+    -t "loops-ar/$CURRENT_PROJECT" \
+    --build-arg UID="$(id -u)" \
+    --build-arg GID="$(id -g)" \
+    --build-arg ssh_key_private="$(cat ~/.ssh/id_rsa)" $*

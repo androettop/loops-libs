@@ -1,0 +1,49 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+import ComponentStory from "./image.stories";
+import FigmaFrame from "../../../utils/figma";
+import ArgsTable from "../../../utils/argsTable";
+
+# Image
+
+Image is a component to show an image with many useful props.
+
+## Sample image
+
+The Image components wraps a standard HTML image, so it inherits all the properties of the html element.
+
+<Canvas>
+  <Story id="atoms-image--sample-image" />
+</Canvas>
+
+## Shape
+
+You can change the shape of the image specifying the props **rounded** or **circle**.
+
+<Canvas>
+  <Story id="atoms-image--rounded-shape" />
+  <Story id="atoms-image--circle-shape" />
+</Canvas>
+
+## Sizing mode
+
+You can change the sizing mode of the image specifying the prop **mode**.
+
+The available modes are:
+
+- **none** (default): the image will be resized to its original size
+- **cover**: the image will be resized to cover the container
+- **contain**: the image will be resized to contain the container
+- **fill**: the image will be resized to fill the container
+- **scale-down**: the image will be resized to fit the container, but if it is smaller than the container, it will be displayed at its original size
+
+<Canvas>
+  <Story id="atoms-image--sample-image" />
+  <Story id="atoms-image--cover-mode" />
+  <Story id="atoms-image--contain-mode" />
+  <Story id="atoms-image--fill-mode" />
+  <Story id="atoms-image--scale-down-mode" />
+</Canvas>
+
+## Props
+
+<ArgsTable story={ComponentStory} />

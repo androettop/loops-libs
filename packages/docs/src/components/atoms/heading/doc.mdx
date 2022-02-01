@@ -1,0 +1,38 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+import ComponentStory from "./heading.stories";
+import FigmaFrame from "../../../utils/figma";
+import ArgsTable from "../../../utils/argsTable";
+
+# Heading
+
+Heading is the component we use to show headings in the apps.
+
+## Figma
+
+<FigmaFrame nodeId="272:381" />
+
+## Sizes
+
+You can specify the size of the Heading using the **size** prop, the avaiable sizes are
+the equivalent to the Standard headings sizes (1-6)
+
+<Canvas>
+  <Story id="atoms-heading--sample-heading-1" />
+  <Story id="atoms-heading--sample-heading-2" />
+  <Story id="atoms-heading--sample-heading-3" />
+  <Story id="atoms-heading--sample-heading-4" />
+  <Story id="atoms-heading--sample-heading-5" />
+  <Story id="atoms-heading--sample-heading-6" />
+</Canvas>
+
+## Max lines
+
+You can also specify a maxLines values to truncate the heading content with **"..."**
+
+<Canvas>
+  <Story id="atoms-heading--sample-max-lines" />
+</Canvas>
+
+## Props
+
+<ArgsTable story={ComponentStory} />

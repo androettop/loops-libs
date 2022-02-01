@@ -1,0 +1,70 @@
+import { Meta } from "@storybook/addon-docs";
+import LoopsMeta from "../../utils/loopsMeta";
+
+<Meta title="2. Guides / Atomic Design" />
+
+# Atomic Design
+
+<LoopsMeta readingTime={5} author="Pablo Androetto" />
+
+### Introduction
+
+This guide will help you to create components following the loops guidelines and best practices.
+
+We follow the "Atomic Design" methodology to create reusable and scalable components in React.
+
+### What is Atomic Design?
+
+We should design for more sizes of screens and for different devices (think mobile, but also tablets, UI for TV, games, VR glasses and AR, etc.) and we need processes that avoid errors and facilitate the development.
+
+Atomic Design is right in the middle between design and development. Designers use style guides and moodboards and developers, frameworks like Bootstrap or Foundation.
+
+Atomic Design unites both disciplines under a concept: design by components.
+
+### 5 levels of Atomic Design
+
+![5 levels of Atomic Design](https://i.imgur.com/Fp3Nx7Z.png)
+
+#### Level 1: Atoms
+
+An atom is the smallest particle that can exist.
+
+Applied to design, we talk about atoms when we talk about UI elements that have only some functionality: buttons, cards, avatars, form inputs… but also the typography, color palette, spacing, paragraphs…
+
+And, each of them, has its own variations that represent states: selected, with focus, disabled, etc.
+
+![Level 1: Atoms](https://i.imgur.com/icOGeFc.png)
+
+#### Level 2: Molecules
+
+A molecule is a combination of two or more atoms.
+
+in the same way, a molecule in Atomic Design is a combination of different atoms to form a UI element more complex.
+
+By example, a form field with a submit button and a label. Or a rectangle with an avatar, name and location of the user (i.e. avatar with text in a certain area). Or an icon next to a text that occupies a certain area.
+
+![Level 2: Molecules](https://i.imgur.com/Vz3RIqN.png)
+
+#### Level 3: Organisms
+
+When we get to the third level, we are talking about UI elements that are more complex, because they are sums of the levels above.
+
+we should not forget that we are talking about UI elements formed by molecules (which are atoms) and that, above all, can repeat themselves.
+
+In this sense, we could consider an organism a combination of molecules. For example, when we combine the rectangles with the avatar and the names, when we combine the icons and text to create a navigation of a web application, etc.
+
+![Level 3: Organisms](https://i.imgur.com/aRQemUH.png)
+
+#### Level 4: Templates
+
+In essence, we should think of “templates” within the Atomic Design no longer would be “wireframes”: a combination of different organisms that form a page or an application.
+
+This is an end product of high fidelity, but that does not end up being the final design. For us to understand, it is the “skeleton” of the application or web page.
+
+![Level 4: Templates](https://i.imgur.com/oQDqSXi.png)
+
+#### Level 5: Pages
+
+This is the last level of Atomic Design. They are, in reality, the final design that already contains images and other details that make that file already ready for development or, in its defect, testing with users or the team.
+
+![Level 5: Pages](https://i.imgur.com/oQDqSXi.png)

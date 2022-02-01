@@ -1,0 +1,46 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+import ComponentStory from "./badge.stories";
+import FigmaFrame from "../../../utils/figma";
+import ArgsTable from "../../../utils/argsTable";
+
+# Badge
+
+Badges are small status descriptors for UI elements.
+
+## Figma
+
+<FigmaFrame nodeId="272:380" />
+
+## Variants
+
+You can specify a variant to change the badge color with the **variant** prop.
+
+<Canvas>
+  <Story id="atoms-badge--primary-badge" />
+  <Story id="atoms-badge--secondary-badge" />
+  <Story id="atoms-badge--error-badge" />
+  <Story id="atoms-badge--info-badge" />
+  <Story id="atoms-badge--neutral-badge" />
+</Canvas>
+
+## Types
+
+You can change the badge type specifying the **type** prop.
+
+<Canvas>
+  <Story id="atoms-badge--neutral-badge" />
+  <Story id="atoms-badge--pill-badge" />
+  <Story id="atoms-badge--bordered-badge" />
+</Canvas>
+
+## Close icon
+
+Is posible to add a close icon to remove the badge (useful for facets) adding a **close** prop and a **onClick** prop
+
+<Canvas>
+  <Story id="atoms-badge--close-badge" />
+</Canvas>
+
+## Props
+
+<ArgsTable story={ComponentStory} />

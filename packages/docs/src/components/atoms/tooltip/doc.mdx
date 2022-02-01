@@ -1,0 +1,36 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+import ComponentStory from "./tooltip.stories";
+import FigmaFrame from "../../../utils/figma";
+import ArgsTable from "../../../utils/argsTable";
+
+# Tooltip
+
+This component can be used to add tooltips to any content.
+
+## Figma
+
+<FigmaFrame nodeId="290:135" />
+
+## Sample tooltip
+
+To add a tooltip to any content you shold wrap the content with the Tooltip.
+Set the **title** prop to set the tooltip text.
+
+<Canvas>
+  <Story id="atoms-tooltip--sample-tooltip" />
+</Canvas>
+
+## Position
+
+You can change the tooltip position (top by default), setting the **position** prop.
+
+<Canvas>
+  <Story id="atoms-tooltip--sample-tooltip-position-top" />
+  <Story id="atoms-tooltip--sample-tooltip-position-bottom" />
+  <Story id="atoms-tooltip--sample-tooltip-position-left" />
+  <Story id="atoms-tooltip--sample-tooltip-position-right" />
+</Canvas>
+
+## Props
+
+<ArgsTable story={ComponentStory} />

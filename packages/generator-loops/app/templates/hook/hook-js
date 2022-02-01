@@ -1,0 +1,9 @@
+import { useState } from "react";
+
+const <%= hookName %> = () => {
+  const [sampleState, setSampleState] = useState();
+
+  return sampleState;
+};
+
+export default <%= hookName %>;

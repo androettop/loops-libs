@@ -1,0 +1,58 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+import ComponentStory from "./sidebaritem.stories";
+import FigmaFrame from "../../../utils/figma";
+import ArgsTable from "../../../utils/argsTable";
+
+# Sidebar Item
+
+SidebarItems are the item menu for the sidebar component.
+
+## Figma
+
+<FigmaFrame nodeId="530:600" />
+
+## Basic Sidebar item
+
+The basic sidebar item has only text, also you can set an item as active with the **active** prop.
+
+<Canvas>
+  <Story id="atoms-sidebar-item--sample-sidebar-item" />
+  <Story id="atoms-sidebar-item--sample-sidebar-item-active" />
+</Canvas>
+
+## Icons
+
+You can add an icon to the Sidebar item using the **icon** prop.
+
+<Canvas>
+  <Story id="atoms-sidebar-item--sample-sidebar-item-icon" />
+  <Story id="atoms-sidebar-item--sample-sidebar-item-icon-active" />
+</Canvas>
+
+## Children
+
+Is posible to add children to an item, simply add more Sidebar items.
+
+<Canvas>
+  <Story id="atoms-sidebar-item--sample-sidebar-item-children" />
+</Canvas>
+
+## States
+
+You can set many standard HTML props to change the input state, like disabled, etc.
+
+<Canvas>
+  <Story id="atoms-sidebar-item--sample-sidebar-item-disabled" />
+</Canvas>
+
+## With line
+
+You can enable the active line (for the frame app) with the **withLine** prop.
+
+<Canvas>
+  <Story id="atoms-sidebar-item--sample-sidebar-item-withline" />
+</Canvas>
+
+## Props
+
+<ArgsTable story={ComponentStory} />

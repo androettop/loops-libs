@@ -1,0 +1,40 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+import ComponentStory from "./paragraph.stories";
+import FigmaFrame from "../../../utils/figma";
+import ArgsTable from "../../../utils/argsTable";
+
+# Paragraph
+
+Paragraph is the component we use to show paragraphs and text in the apps.
+
+## Figma
+
+<FigmaFrame nodeId="273:16" />
+
+## Sizes
+
+You can specify the size of the Paragraph using the **size** prop, the avaiable sizes 1 and 2.
+
+<Canvas>
+  <Story id="atoms-paragraph--sample-paragraph-1" />
+  <Story id="atoms-paragraph--sample-paragraph-2" />
+</Canvas>
+
+## Max lines
+
+You can also specify a maxLines values to truncate the paragraph content with **"..."**.
+
+<Canvas>
+  <Story id="atoms-paragraph--sample-max-lines" />
+</Canvas>
+
+When the paragraph is truncated, the component will fade out the text with a gradient
+effect, you can disable this effect with the **gradient** prop, setting it to **false**.
+
+<Canvas>
+  <Story id="atoms-paragraph--sample-gradient" />
+</Canvas>
+
+## Props
+
+<ArgsTable story={ComponentStory} />

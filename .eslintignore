@@ -1,0 +1,4 @@
+dist
+/.cache
+/public
+__pycache__

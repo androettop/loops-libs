@@ -1,0 +1,254 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+import ComponentStory from "./listresults.stories";
+import FigmaFrame from "../../../utils/figma";
+import ArgsTable from "../../../utils/argsTable";
+
+import listlayout from "./listlayout.gif";
+
+# List Results
+
+List results shows a list of search results like cards.
+
+The advantage of using List Results over creating cards manually is that this component automatizes the task of designing the layout and drawing the data. Making possible that this configuration is stored in an independent file or in a database.
+
+## Figma
+
+<FigmaFrame nodeId="500:1076" />
+
+## Layout configuration
+
+The card layout is based on our grid system. We configure an array of columns, each with its configuration (size, alignment, padding, etc.).
+
+if you want to see the grid system documentation, check out the [Grid System](/docs/organisms-grid-system)
+
+A column is an object with the following properties:
+
+```ts
+type Column = {
+  type: string; //The name of the component to be renderd by the DynamicComponent
+  name?: string; //The name of the field in the data array
+  label?: string; //The label of the field for the table view.
+  layout?: ColProps; //An object to be passed directly to Column props (for responsive)
+  props?: object; //An object with additional props for the component
+  /*
+   * NOTE: the onClick function in props has the parameters: "record"
+   * (the entire clicked record) and "value" (the specific clicked value,
+   * usefull for array of values)
+   */
+  newRow?: boolean; //Indicates if the component should be drawn in a new row
+};
+```
+
+> ℹ️ **Note that the ListResults adds the \_key property to the records of the data to optimize the renders, and storybook can show it.**
+
+The layout is divided in two parts: The layout and the components inside the layout.
+
+For the layout creation we iterate the columns array, and create a column for each one of them.
+
+The columns are placed by default in a single row, but we can specify that a column should be drawn in a new row with the newRow property as true.
+
+**Example**:
+
+```jsx
+<ListResults
+  data={formattedData}
+  columns={[
+    {
+      type: "Heading",
+      name: "title",
+      label: "Title",
+      props: {
+        size: "2",
+      },
+    },
+    {
+      type: "Paragraph",
+      name: "description",
+      label: "Description",
+      newRow: true,
+    },
+    {
+      type: "TooltipButton",
+      label: "Delete",
+      props: {
+        text: "Delete",
+        variant: "Error",
+        icon: "Trash",
+        mode: "link",
+      },
+      layout: {
+        xs: "12",
+        sm: "6",
+      },
+      newRow: true,
+    },
+    {
+      type: "TooltipButton",
+      label: "Edit",
+      props: {
+        text: "Edit",
+        variant: "Primary",
+        icon: "edit",
+        mode: "link",
+      },
+      layout: {
+        xs: "12",
+        sm: "6",
+      },
+    },
+  ]}
+/>
+```
+
+We can see how the layout is created with the following animation:
+
+<img src={listlayout} />
+
+## Data format
+
+In the most cases, the data is in an array with a structure like this:
+
+```ts
+type Data = {
+  hits: {
+    hits: Array<{
+      _id: string;
+      _source: {
+        title: string;
+        description: string;
+        ...
+      };
+    }>;
+  };
+};
+```
+
+We need to normalize the data to be able to use it with the ListResults, we recommend creating a **formatData** function that returns the data with just the fields we need and with the format we want.
+
+**Example**:
+
+```jsx
+const formatData = (data: Data) => {
+    return data?.hits?.hits.map((item) => ({
+            _key: item._id, //optional, but recommended
+            id: item._id,
+            title: item._source?.title,
+            description: item._source?.description,
+            ...
+        })
+    );
+}
+```
+
+To improve the performance, we recommend to store the data in memory with the useMemo hook.
+
+**Example**:
+
+with useMemo:
+
+```jsx
+const formattedData = useMemo(() => formatData(data), [data]);
+```
+
+## Components Rendering
+
+Inside each column of the layout, the component defined in the configuration is rendered.
+
+The rendering of these components is done by the DynamicComponent component.
+DynamicComponent receives the type and the props from the column configuration, and the value of the field of the data array.
+
+You can see more detail about the [DynamicComponent](/docs/molecules-dynamic-component) in its documentation page.
+
+## ListResults Modes
+
+You can modify the way the cards are displayed and their image using the **mode** property selecting one of the following values:
+
+- **list**: Shows the image on the left side of the card.
+- **card**: Shows the image on the top of the card.
+- **responsive**: Changes between list and card depending on the size of the card.
+
+## Selectable
+
+You can make the cards selectable by setting the **onSelect** and **selectedItems** props.
+
+**onSelect** is a callback executed when the card is selected (clicked), is not possible use this callback at the same time as the **onClick** callback.
+
+Optionally, you can set the **itemIdentifier** prop to define the field of the data array that will be used as the identifier of the item.
+
+**selectedItems** is an array of the selected items ids (or the identifier you choose).
+
+You can use pagination as you would normally.
+
+A selected item looks like:
+
+<Canvas>
+  <Story id="organisms-list-results--selectable-list" />
+</Canvas>
+
+## Sample cards
+
+### Compact card
+
+You can resize the result items to display them as cards with the "layout" prop, using the Column props format.
+
+<Canvas>
+  <Story id="organisms-list-results--compact-card" />
+</Canvas>
+
+### Normal card
+
+<Canvas>
+  <Story id="organisms-list-results--normal-card" />
+</Canvas>
+
+### Medium card
+
+<Canvas>
+  <Story id="organisms-list-results--medium-card" />
+</Canvas>
+
+### Full content card
+
+<Canvas>
+  <Story id="organisms-list-results--full-content-card" />
+</Canvas>
+
+## Sample lists
+
+### List as a table
+
+You can display the results as a table with the **mode** prop as "list" and **singleRow** prop as true.
+
+When you use this mode, the list will be displayed as a table with the columns labels in the header.
+
+<Canvas>
+  <Story id="organisms-list-results--list-as-table" />
+</Canvas>
+
+### Compact list
+
+<Canvas>
+  <Story id="organisms-list-results--compact-list" />
+</Canvas>
+
+### Simple list
+
+<Canvas>
+  <Story id="organisms-list-results--simple-list" />
+</Canvas>
+
+### Medium list
+
+<Canvas>
+  <Story id="organisms-list-results--medium-list" />
+</Canvas>
+
+### Full content list
+
+<Canvas>
+  <Story id="organisms-list-results--full-content-list" />
+</Canvas>
+
+## Props
+
+<ArgsTable story={ComponentStory} />

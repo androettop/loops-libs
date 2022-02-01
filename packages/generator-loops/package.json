@@ -1,0 +1,36 @@
+{
+  "name": "@loops-ar/generator-loops",
+  "version": "1.0.0",
+  "description": "This generator generates components and stories",
+  "homepage": "loops.ar",
+  "author": {
+    "name": "Pablo",
+    "email": "androettop@gmail.com",
+    "url": "https://github.com/androettop"
+  },
+  "files": [
+    "generators"
+  ],
+  "main": "generators/index.js",
+  "keywords": [
+    "",
+    "yeoman-generator"
+  ],
+  "devDependencies": {
+    "yeoman-assert": "^3.1.1",
+    "yeoman-test": "^1.7.0"
+  },
+  "engines": {
+    "npm": ">= 4.0.0"
+  },
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "lodash": "^4.17.21",
+    "yeoman-generator": "^3.1.1",
+    "yosay": "^2.0.2"
+  },
+  "scripts": {
+    "build": "echo This project has no build task"
+  },
+  "license": "Apache-2.0"
+}

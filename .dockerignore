@@ -1,0 +1,11 @@
+.diff
+.git
+**/node_modules
+/build
+/diff
+/public
+config/config.env.json
+dist
+npm-debug.log
+yarn-error.log
+__pycache__

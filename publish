@@ -1,0 +1,58 @@
+#!/bin/bash
+
+
+#### Color scape codes ####
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+###########################
+
+
+if [[ "$2" = "yes" ]]; then
+    echo -e "${BLUE}Setting the npm token${NC}"
+    cat >~/.npmrc <<EOL
+# Remove comments for custom npm registry
+# registry=http://custom-registry.com:4872/
+# //custom-registry.com:4872/:_authToken="${NPM_TOKEN}"
+EOL
+    echo -e "${BLUE}Setting the new package version${NC}"
+    yarn workspace "@loops-ar/$1" version --patch --no-git-tag-version
+    echo -e "${BLUE}Building the package${NC}"
+    yarn workspace "@loops-ar/$1" build
+    echo -e "${BLUE}Publishing the package${NC}"
+    yarn publish "packages/$1"
+else
+    # check git status
+    if [[ $(git status --porcelain) ]]; then
+        echo -e "${RED}You cannot publish if you have pending changes in your repository${NC}"
+        exit 1;
+    fi
+
+    # check branch
+    BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+    if [[ "$BRANCH" != "main" ]]; then
+        echo -e "${RED}You need to be in the main branch to publish a version${NC}"
+        exit 1;
+    fi
+    
+    CURRENT_PROJECT=${PWD##*/}
+    CONTAINER=$(sudo docker ps --format "{{.Names}}" |  grep "$CURRENT_PROJECT")
+
+    if [ -z "$CONTAINER" ]; then
+        echo -e "The container for the $RED'$CURRENT_PROJECT'$NC service does not exist or is not running"
+        # print the same message but with the project name in red
+    else
+        sudo docker exec -w "/devel" -e NPM_TOKEN="$NPM_TOKEN" "$CONTAINER" sh publish "$1" yes
+
+        PACKAGE_VERSION=$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' "packages/$1/package.json")
+
+        echo -e "${BLUE}Creating [VERSION] Commit${NC}"
+        git add packages/$1/package.json
+        git commit -m "[VERSION] Updated $1 version to ${PACKAGE_VERSION}"
+
+        git tag "$PACKAGE_VERSION"
+        
+        echo -e "${GREEN}Published $1 version and created the [VERSION] commit, remember run git push$NC"
+    fi
+fi
