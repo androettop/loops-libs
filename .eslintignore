@@ -2,3 +2,4 @@ dist
 /.cache
 /public
 __pycache__
+/.github
