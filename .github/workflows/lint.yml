@@ -43,3 +43,9 @@ jobs:
         run: yarn build
         env:
           CI: true
+      - name: Surge deploy
+        run: yarn upload
+        env:
+          CI: true
+          SURGE_LOGIN: ${{ secrets.surge_login }}
+          SURGE_TOKEN: ${{ secrets.surge_token }}
