@@ -12,7 +12,7 @@ on:
 
 jobs:
   build_and_lint:
-    name: Build & Lint
+    name: Build & Deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -43,3 +43,8 @@ jobs:
         run: yarn build
         env:
           CI: true
+      - name: Deploy storybook
+        run: yarn upload
+        env:
+          SURGE_LOGIN: ${{ secrets.surge_login }}
+          SURGE_TOKEN: ${{ secrets.surge_token }}
