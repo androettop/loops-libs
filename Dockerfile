@@ -3,6 +3,8 @@
 ## DEV STAGE
 FROM node:16-alpine AS dev
 
+RUN yarn global add surge
+
 ARG UID=1000
 ARG GID=1000
 ARG ssh_key_private

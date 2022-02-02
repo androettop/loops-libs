@@ -10,6 +10,7 @@
     "hooks:build": "yarn workspace @loops-ar/hooks build",
     "docs:start": "cd packages/docs && yarn start",
     "docs:build": "yarn workspace @loops-ar/docs build",
+    "upload": "yarn docs:build && mv ./public/index.html ./public/200.html && surge --domain=\"https://loopsar-docs.surge.sh\" ./public",
     "lint": "eslint ./",
     "lint:fix": "eslint ./ --fix",
     "start": "yarn hooks:build && yarn ui:build && npm-run-all -r --parallel ui:start hooks:start docs:start",
