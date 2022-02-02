@@ -28,3 +28,4 @@ rules:
   react/forbid-prop-types: "off"
   react/jsx-filename-extension: [1, { "extensions": [".js"] }]
   react/jsx-props-no-spreading: "off"
+  react/function-component-definition: "off"

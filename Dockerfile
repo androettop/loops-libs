@@ -3,8 +3,6 @@
 ## DEV STAGE
 FROM node:16-alpine AS dev
 
-RUN yarn global add surge
-
 ARG UID=1000
 ARG GID=1000
 ARG ssh_key_private
@@ -39,8 +37,8 @@ RUN chmod 600 "/home/node/.ssh/id_rsa"
 # Set custom registry
 # RUN yarn config set registry http://custom-registry.com:4872
 
-# Install dependencies & remove unnecesary cache to decrease image size
-RUN yarn install --verbose && yarn cache clean 
+# Install dependencies
+RUN yarn install --verbose
 
 COPY --chown=node . .
 

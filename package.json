@@ -10,11 +10,11 @@
     "hooks:build": "yarn workspace @loops-ar/hooks build",
     "docs:start": "cd packages/docs && yarn start",
     "docs:build": "yarn workspace @loops-ar/docs build",
-    "upload": "yarn docs:build && mv ./public/index.html ./public/200.html && surge --domain=\"https://loopsar-docs.surge.sh\" ./public",
     "lint": "eslint ./",
     "lint:fix": "eslint ./ --fix",
     "start": "yarn hooks:build && yarn ui:build && npm-run-all -r --parallel ui:start hooks:start docs:start",
     "build": "yarn workspaces run build",
+    "upload": "mv ./public/index.html ./public/200.html && surge --domain=\"https://loopsar-docs.surge.sh\" ./public",
     "generate": "yo @loops-ar/loops --force"
   },
   "files": [],
@@ -43,6 +43,7 @@
     "eslint-plugin-react": "^7.28.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.4.1",
+    "surge": "^0.23.1",
     "yo": "^4.3.0"
   }
 }
