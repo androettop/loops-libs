@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@loops-ar/hooks": "^1.0.0",
-    "axios": "^0.25.0",
+    "axios": "^1.0.0",
     "color": "^4.0.1",
     "copy-to-clipboard": "^3.3.1",
     "polished": "^4.1.3",
