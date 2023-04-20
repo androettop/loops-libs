@@ -29,7 +29,7 @@
     "@loops-ar/hooks": "^1.0.0",
     "axios": "^1.3.5",
     "color": "^4.0.1",
-    "copy-to-clipboard": "^3.3.1",
+    "copy-to-clipboard": "^3.3.3",
     "polished": "^4.1.3",
     "prop-types": "^15.7.2",
     "react-beautiful-dnd": "^13.1.0",
